@@ -28,8 +28,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     func fetchCellData()
     {
-        for cellName in ["hoge", "fuga"]  {
-            self.tableCells.append(Cell(name: cellName))
+        for cellName in ["hoge", "fuga"] {
+            self.tableCells.append(Cell(name: cellName, imageName: "test_image"))
         }
     }
     
@@ -49,6 +49,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let identifer = "cell", cell = MyTableCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: identifer)
 
         cell.initTableCell(self.tableCells[indexPath.row])
+        if indexPath.row % 2 == 0 {
+            cell.backgroundColor = UIColor.orangeColor()
+        }
 
         return cell
     }

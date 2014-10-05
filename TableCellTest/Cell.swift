@@ -11,9 +11,11 @@ import Foundation
 class Cell
 {
     var name = ""
+    var imageName = ""
 
-    init(name:String)
+    init(name:String, imageName:String)
     {
-        self.name = name
+        self.name      = name
+        self.imageName = imageName
     }
 }
