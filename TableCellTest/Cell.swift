@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  Cell.swift
 //  TableCellTest
 //
 //  Created by teitei-tk on 2014/10/05.
@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+class Cell
+{
+    var name = ""
+
+    init(name:String)
+    {
+        self.name = name
+    }
+}

@@ -11,23 +11,25 @@ import Foundation
 
 class MyTableCell: UITableViewCell
 {
-    var label:UILabel?
     let identifer:String = "cell"
+    var label:UILabel?
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String!)
     {
         super.init(style: UITableViewCellStyle.Subtitle, reuseIdentifier: reuseIdentifier)
 
-        var rect = CGRectMake(10, 0, 60, 30)
-
-        self.label = UILabel()
-        self.label!.frame = rect
-        self.label!.textColor = UIColor.redColor()
-
-        self.contentView.addSubview(self.label!)
     }
 
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    func initTableCell(cell:Cell)
+    {
+        self.label = UILabel()
+        self.label!.frame = CGRectMake(0, 0, 60, 30)
+        self.label?.text  = cell.name
+
+        self.contentView.addSubview(self.label!)
     }
 }
