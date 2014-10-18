@@ -13,20 +13,32 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var tableView: UITableView!
     var tableCells: [Cell] = [Cell]()
 
-    override func viewDidLoad() {
+    override func viewDidLoad() 
+    {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
-        self.fetchCellData()
+        self.fetchApiData()
         self.initializeTableView()
     }
     
-    override func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning() 
+    {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
-    func fetchCellData()
+    func fetchApiData()
+    {
+        let fetchUrl = NSURL(scheme: "http://api.tiqav.com/", host: "api.tigav.com", path:"search/random.json")
+        let apiRequest = NSURLRequest(URL: fetchUrl)
+        let connection: NSURLConnection = NSURLConnection(request: apiRequest, delegate: self, startImmediately: false)
+
+        NSURLConnection.sendAsynchronousRequest(
+            apiRequest,queue: NSOperationQueue.mainQueue(),completionHandler: self.fetchCellData) 
+    }
+
+    func fetchCellData(res: NSURLResponse!, data: NSData!, error: NSError!) 
     {
         for cellName in ["hoge", "fuga"] {
             self.tableCells.append(Cell(name: cellName, imageName: "test_image"))
