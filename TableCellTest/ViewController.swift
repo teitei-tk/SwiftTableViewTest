@@ -30,9 +30,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     func fetchApiData()
     {
-        let fetchUrl = NSURL(scheme: "http://api.tiqav.com/", host: "api.tigav.com", path:"search/random.json")
-        let apiRequest = NSURLRequest(URL: fetchUrl)
-        let connection: NSURLConnection = NSURLConnection(request: apiRequest, delegate: self, startImmediately: false)
+        let fetchUrl = NSURL(string: "http://api.tiqav.com/search/random.json")
+        let apiRequest = NSURLRequest(URL: fetchUrl!)
+        let connection: NSURLConnection = NSURLConnection(request: apiRequest, delegate: self, startImmediately: false)!
 
         NSURLConnection.sendAsynchronousRequest(
             apiRequest,queue: NSOperationQueue.mainQueue(),completionHandler: self.fetchCellData) 
