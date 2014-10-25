@@ -35,7 +35,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let connection: NSURLConnection = NSURLConnection(request: apiRequest, delegate: self, startImmediately: false)!
 
         NSURLConnection.sendAsynchronousRequest(
-            apiRequest,queue: NSOperationQueue.mainQueue(),completionHandler: self.fetchCellData) 
+            apiRequest,
+            queue: NSOperationQueue.mainQueue(),completionHandler:
+            self.fetchCellData
+        )
     }
 
     func fetchCellData(res: NSURLResponse!, data: NSData!, error: NSError!) 
@@ -43,6 +46,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         for cellName in ["hoge", "fuga"] {
             self.tableCells.append(Cell(name: cellName, imageName: "test_image"))
         }
+        
+        dispatch_async(dispatch_get_main_queue(), {
+            self.tableView.reloadData()
+        })
     }
     
     func initializeTableView()
