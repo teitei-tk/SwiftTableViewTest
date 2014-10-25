@@ -31,10 +31,10 @@ class MyTableCell: UITableViewCell
     func initTableCell(cell:Cell)
     {
         self.label!.frame = CGRectMake(75, 0, 60, 40)
-        self.label?.text  = cell.name
+        self.label!.text  = cell.name
 
         self.imageData!.frame = CGRect(x: 8, y: (72 - 64 ) / 2, width: 64, height: 64)
-        self.imageData?.image = UIImage(named: cell.imageName)
+        self.imageData!.image = UIImage(named: cell.imageName)
 
         self.contentView.addSubview(self.label!)
         self.contentView.addSubview(self.imageData!)
