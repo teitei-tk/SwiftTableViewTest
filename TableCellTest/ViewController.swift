@@ -30,7 +30,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     func fetchApiData()
     {
-        let fetchUrl = NSURL(string: "http://api.tiqav.com/search/random.json")
+        let fetchUrl = NSURL(string: Urls.RANDOM())
         let apiRequest = NSURLRequest(URL: fetchUrl!)
         let connection: NSURLConnection = NSURLConnection(request: apiRequest, delegate: self, startImmediately: false)!
 
@@ -67,7 +67,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     {
         let identifer = "cell", cell = MyTableCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: identifer)
 
-        cell.initTableCell(self.tableCells[indexPath.row])
+        cell.initForTableCell(self.tableCells[indexPath.row])
         if indexPath.row % 2 == 0 {
             cell.backgroundColor = UIColor.orangeColor()
         }
