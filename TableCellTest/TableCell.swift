@@ -28,7 +28,7 @@ class MyTableCell: UITableViewCell
         fatalError("init(coder:) has not been implemented")
     }
 
-    func initTableCell(cell:Cell)
+    func initForTableCell(cell:Cell)
     {
         self.label!.frame = CGRectMake(75, 0, 60, 40)
         self.label!.text  = cell.name
