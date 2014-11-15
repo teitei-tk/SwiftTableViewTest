@@ -10,8 +10,8 @@ import Foundation
 
 struct API_URLS
 {
-    static let API_BASE:String      = "http://api.tiqav.com/"
-    static let API_IMAGE_URL:String = "http://img.tiqav.com/"
+    static let API_BASE:String  = "http://api.tiqav.com/"
+    static let IMAGE_URL:String = "http://img.tiqav.com/"
 }
 
 class Urls
@@ -21,8 +21,18 @@ class Urls
         return API_URLS.API_BASE + path
     }
 
+    class func URL_BASE(path: String) -> String
+    {
+        return API_URLS.IMAGE_URL + path
+    }
+
     class func RANDOM() -> String
     {
         return Urls.API_BASE("search/random.json")
+    }
+
+    class func API_IMAGE_URL(fileName: String) -> String
+    {
+        return Urls.URL_BASE(fileName)
     }
 }

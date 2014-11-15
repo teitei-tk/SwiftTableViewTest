@@ -30,6 +30,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     func fetchApiData()
     {
+        println(Urls.RANDOM())
         let fetchUrl = NSURL(string: Urls.RANDOM())
         let apiRequest = NSURLRequest(URL: fetchUrl!)
         let connection: NSURLConnection = NSURLConnection(request: apiRequest, delegate: self, startImmediately: false)!
@@ -43,10 +44,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     func fetchCellData(res: NSURLResponse!, data: NSData!, error: NSError!) 
     {
+        let json_data = JSON(data: data)
+
+        for json in json_data {
+            let (_, data) = json
+            println(data["id"])
+            println(data["source_url"])
+//          self.tableCells.append(Cell(name: data["id"], imageName: data["source_url"]))
+        }
+
         for cellName in ["hoge", "fuga"] {
             self.tableCells.append(Cell(name: cellName, imageName: "test_image"))
         }
-        
+  
         dispatch_async(dispatch_get_main_queue(), {
             self.tableView.reloadData()
         })

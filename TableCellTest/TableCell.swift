@@ -33,8 +33,10 @@ class MyTableCell: UITableViewCell
         self.label!.frame = CGRectMake(75, 0, 60, 40)
         self.label!.text  = cell.name
 
+//      let url = NSURL.URLWithString(cell.imageName)
+//      let imageData: NSData = NSData(contentsOfURL: url)
         self.imageData!.frame = CGRect(x: 8, y: (72 - 64 ) / 2, width: 64, height: 64)
-        self.imageData!.image = UIImage(named: cell.imageName)
+        self.imageData!.image = UIImage(contentsOfFile: cell.imageName)
 
         self.contentView.addSubview(self.label!)
         self.contentView.addSubview(self.imageData!)
